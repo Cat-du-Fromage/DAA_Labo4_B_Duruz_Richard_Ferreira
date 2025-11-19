@@ -1,4 +1,4 @@
-package ch.heigvd.iict.daa.template
+package ch.heigvd.iict.daa.lab4_b
 
 import org.junit.Test
 

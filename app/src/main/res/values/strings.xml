@@ -1,4 +1,29 @@
 <resources>
-    <string name="app_name">DAA lab XX</string>
+    <string name="app_name">DAA lab 04</string>
     <string name="welcome">Welcome to DAA !</string>
+    <string name="notes_title">My notes</string>
+    <string name="note_image_desc">NoteImage</string>
+
+    <!-- Strings schedule related -->
+    <string name="schedule_same_day">Today</string>
+    <string name="schedule_past_date">Late</string>
+    <string name="action_menu_title">TRIER</string>
+    <string name="creation_date_menu_item">Creation date</string>
+    <string name="eta_menu_item">ETA</string>
+    <string name="generate_menu_item">GENERATE</string>
+    <string name="delete_menu_item">DELETE</string>
+    <plurals name="schedule_day_unit">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+
+    <plurals name="schedule_month_unit">
+        <item quantity="one">%1$d month</item>
+        <item quantity="other">%1$d months</item>
+    </plurals>
+
+    <plurals name="schedule_year_unit">
+        <item quantity="one">%1$d year</item>
+        <item quantity="other">%1$d years</item>
+    </plurals>
 </resources>

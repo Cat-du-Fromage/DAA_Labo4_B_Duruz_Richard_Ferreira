@@ -1,4 +1,4 @@
-package ch.heigvd.iict.daa.template
+package ch.heigvd.iict.daa.lab4_b
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
