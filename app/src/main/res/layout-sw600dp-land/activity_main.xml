@@ -33,11 +33,33 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <!-- CHANGE ME -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/notes_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesFragment"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            android:name="ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesFragment" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/actions_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:name="ch.heigvd.iict.daa.lab4_b.fragments.actions.ActionsFragment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

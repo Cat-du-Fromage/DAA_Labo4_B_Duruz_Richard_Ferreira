@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/notes_view_item"
+    android:layout_width="match_parent"
+    android:layout_height="48dp">
+    <!-- TODO : put height in dimen -->
+
+    <ImageView
+        android:id="@+id/note_image"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/note_image_desc" />
+
+    <RelativeLayout
+        android:id="@+id/note_text_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/note_image"
+        android:layout_centerVertical="true" >
+        <TextView
+            android:id="@+id/note_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/note_desc_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/note_title_text"
+            android:text="Desc" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/schedule_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/note_text_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp" >
+        
+        <ImageView
+            android:id="@+id/schedule_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/schedule_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/schedule_clock"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
