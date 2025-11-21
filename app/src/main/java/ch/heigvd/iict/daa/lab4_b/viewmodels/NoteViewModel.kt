@@ -7,16 +7,16 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
 
     // LiveData publiques (non modifiables)
     val allNotes: LiveData<List<NoteAndSchedule>>
-        get() = repository.notes
+        get() = repository.allNotes
 
     val countNotes: LiveData<Int>
-        get() = repository.noteCount
+        get() = repository.countNotes
 
     fun generateANote() {
-        repository.generateNote()
+        repository.generateANote()
     }
 
     fun deleteAllNote() {
-        repository.deleteNotes()
+        repository.deleteAllNotes()
     }
 }

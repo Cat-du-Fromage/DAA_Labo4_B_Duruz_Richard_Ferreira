@@ -1,4 +1,3 @@
-// Fichier: NotesViewAdapter.kt
 package ch.heigvd.iict.daa.lab4_b.fragments.notes
 
 import android.content.Context
@@ -19,7 +18,10 @@ import kotlin.math.truncate
 
 class NotesViewAdapter(private val context: Context) : RecyclerView.Adapter<NotesViewAdapter.ViewHolder>() {
 
-    // On garde la logique du DiffUtil ici, c'est très bien
+    // Constantes pour les types de vue
+    private val TYPE_NOTE = 0
+    private val TYPE_NOTE_WITH_SCHEDULE = 1
+
     var items = listOf<NoteAndSchedule>()
         set(value) {
             val diffCallback = NotesDiffCallback(field, value)
@@ -30,8 +32,20 @@ class NotesViewAdapter(private val context: Context) : RecyclerView.Adapter<Note
 
     override fun getItemCount() = items.size
 
+    // 1. ON DÉFINIT LE TYPE DE VUE EN FONCTION DE L'EXISTENCE D'UN SCHEDULE
+    override fun getItemViewType(position: Int): Int {
+        return if (items[position].schedule != null) TYPE_NOTE_WITH_SCHEDULE else TYPE_NOTE
+    }
+
+    // 2. ON CHARGE LE BON LAYOUT XML SELON LE VIEWTYPE
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.notes_view_item, parent, false), context)
+        val layoutId = if (viewType == TYPE_NOTE_WITH_SCHEDULE) {
+            // Assure-toi d'avoir ce layout ou utilise le même si tu gères la visibilité dans le XML
+            R.layout.notes_view_item // Idéalement : R.layout.notes_view_item_schedule
+        } else {
+            R.layout.notes_view_item
+        }
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(layoutId, parent, false), context)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -39,18 +53,18 @@ class NotesViewAdapter(private val context: Context) : RecyclerView.Adapter<Note
     }
 
     class ViewHolder(view: View, val context: Context) : RecyclerView.ViewHolder(view) {
-        // ... (Le code du ViewHolder reste identique, il est correct) ...
-        // Je ne le remets pas ici pour gagner de la place, mais garde tout le bloc 'bind' et 'mapDuration'.
         private val noteImage = view.findViewById<ImageView>(R.id.note_image)
         private val noteTitle = view.findViewById<TextView>(R.id.note_title_text)
         private val noteDesc = view.findViewById<TextView>(R.id.note_desc_text)
-        private val noteScheduleImage = view.findViewById<ImageView>(R.id.schedule_clock)
-        private val noteScheduleText = view.findViewById<TextView>(R.id.schedule_text)
+
+        // Ces vues peuvent être nulles si on est dans le layout "simple note"
+        private val noteScheduleImage = view.findViewById<ImageView?>(R.id.schedule_clock)
+        private val noteScheduleText = view.findViewById<TextView?>(R.id.schedule_text)
 
         fun bind(noteAndSchedule: NoteAndSchedule) {
-            // ... (Ton code existant) ...
             val note = noteAndSchedule.note
-            // Note icon
+
+            // ... (Gestion des icônes et couleurs identique à ton code) ...
             when(note.type) {
                 Type.NONE -> noteImage.setImageResource(R.drawable.note)
                 Type.SHOPPING -> noteImage.setImageResource(R.drawable.shopping)
@@ -59,31 +73,42 @@ class NotesViewAdapter(private val context: Context) : RecyclerView.Adapter<Note
                 Type.WORK -> noteImage.setImageResource(R.drawable.work)
             }
 
-            // If is done, add a green overlay
             if (note.state == State.DONE) {
                 noteImage.setColorFilter(Color.argb(255, 0, 200, 0))
+            } else {
+                noteImage.clearColorFilter() // Important de nettoyer si recyclé
             }
 
-            // Note texts
             noteTitle.text = note.title
             noteDesc.text = note.text
 
-            // Note schedule, if present
+            // Gestion du Schedule (seulement si les vues existent dans le layout chargé)
             if (noteAndSchedule.schedule != null && note.state == State.IN_PROGRESS) {
-                val isLate = Calendar.getInstance() > noteAndSchedule.schedule.date
-
-                noteScheduleImage.setImageResource(R.drawable.clock)
-                if (isLate) {
-                    noteScheduleImage.setColorFilter(Color.argb(255, 200, 0, 0))
-                    noteScheduleText.text = context.resources.getString(R.string.schedule_past_date)
-                } else {
-                    noteScheduleText.text = mapDuration(noteAndSchedule.schedule.date)
+                // On utilise ?.let car ces vues n'existent peut-être pas dans le layout "TYPE_NOTE"
+                noteScheduleImage?.let { img ->
+                    val isLate = Calendar.getInstance() > noteAndSchedule.schedule.date
+                    img.setImageResource(R.drawable.clock)
+                    if (isLate) {
+                        img.setColorFilter(Color.argb(255, 200, 0, 0))
+                        noteScheduleText?.text = context.resources.getString(R.string.schedule_past_date)
+                    } else {
+                        img.clearColorFilter()
+                        noteScheduleText?.text = mapDuration(noteAndSchedule.schedule.date)
+                    }
+                    // S'assurer qu'ils sont visibles (au cas où le layout les cachait)
+                    img.visibility = View.VISIBLE
+                    noteScheduleText?.visibility = View.VISIBLE
                 }
+            } else {
+                // Si pas de schedule ou note finie, on cache (utile si tu gardes un seul layout temporairement)
+                noteScheduleImage?.visibility = View.GONE
+                noteScheduleText?.visibility = View.GONE
             }
         }
 
+        // ... (Ta fonction mapDuration reste inchangée) ...
         private fun mapDuration(date: Calendar) : String {
-            // ... (Ton code existant) ...
+            // ... copie ton code mapDuration ici ...
             val today = Calendar.getInstance()
             val diff = date.timeInMillis - today.timeInMillis
             val days = diff / 86400000
@@ -102,8 +127,4 @@ class NotesViewAdapter(private val context: Context) : RecyclerView.Adapter<Note
             }
         }
     }
-
-    // SUPPRIMÉ : fun deleteAll()
-    // SUPPRIMÉ : fun addNote()
-    // SUPPRIMÉ : fun reorderByField()
 }
