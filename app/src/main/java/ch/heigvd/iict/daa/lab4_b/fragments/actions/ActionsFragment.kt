@@ -1,6 +1,6 @@
 package ch.heigvd.iict.daa.lab4_b.fragments.actions
 
-import NoteViewModel
+import NotesViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.heigvd.iict.daa.lab4_b.NotesApplication
 import ch.heigvd.iict.daa.lab4_b.R
-import ch.heigvd.iict.daa.lab4_b.viewmodels.NoteViewModelFactory
+import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
 
 class ActionsFragment : Fragment() {
-    private val noteViewModel: NoteViewModel by activityViewModels {
-        NoteViewModelFactory((requireActivity().application as NotesApplication).noteRepository)
+    private val notesViewModel: NotesViewModel by activityViewModels {
+        NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -25,11 +25,11 @@ class ActionsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.generate_note_action).setOnClickListener {
-            noteViewModel.generateANote()
+            notesViewModel.generateANote()
         }
 
         view.findViewById<Button>(R.id.delete_notes_action).setOnClickListener {
-            noteViewModel.deleteAllNote()
+            notesViewModel.deleteAllNote()
         }
     }
 }

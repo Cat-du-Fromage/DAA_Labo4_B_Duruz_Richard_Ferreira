@@ -3,7 +3,7 @@ import androidx.lifecycle.ViewModel
 import ch.heigvd.iict.daa.lab4_b.models.NoteAndSchedule
 import ch.heigvd.iict.daa.lab4_b.repository.NoteRepository
 
-class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
+class NotesViewModel(private val repository: NoteRepository) : ViewModel() {
 
     // LiveData publiques (non modifiables)
     val allNotes: LiveData<List<NoteAndSchedule>>

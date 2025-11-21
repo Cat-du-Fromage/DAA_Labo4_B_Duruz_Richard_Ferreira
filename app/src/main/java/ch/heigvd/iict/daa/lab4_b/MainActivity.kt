@@ -1,6 +1,6 @@
 package ch.heigvd.iict.daa.lab4_b
 
-import NoteViewModel
+import NotesViewModel
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,10 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentContainerView
 import ch.heigvd.iict.daa.lab4_b.fragments.actions.ActionsFragment
 import ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesFragment
-import ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesViewAdapter
-import ch.heigvd.iict.daa.lab4_b.models.Note
-import ch.heigvd.iict.daa.lab4_b.models.NoteAndSchedule
-import ch.heigvd.iict.daa.lab4_b.viewmodels.NoteViewModelFactory
+import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
 import kotlin.getValue
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var notesFragment: NotesFragment
     private var actionsFragment: ActionsFragment? = null
 
-    private val noteViewModel: NoteViewModel by viewModels {
-        NoteViewModelFactory((application as NotesApplication).noteRepository)
+    private val notesViewModel: NotesViewModel by viewModels {
+        NotesViewModelFactory((application as NotesApplication).noteRepository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,12 +62,12 @@ class MainActivity : AppCompatActivity() {
         return when(item.itemId) {
             R.id.delete_notes_action -> {
                 // CORRECT : On passe par le ViewModel
-                noteViewModel.deleteAllNote()
+                notesViewModel.deleteAllNote()
                 true
             }
             R.id.generate_note_action -> {
                 // CORRECT : On demande au ViewModel de générer
-                noteViewModel.generateANote()
+                notesViewModel.generateANote()
                 true
             }
             R.id.sort_by_creation_date_action -> {

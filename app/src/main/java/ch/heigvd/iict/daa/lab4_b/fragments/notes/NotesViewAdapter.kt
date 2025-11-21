@@ -40,8 +40,7 @@ class NotesViewAdapter(private val context: Context) : RecyclerView.Adapter<Note
     // 2. ON CHARGE LE BON LAYOUT XML SELON LE VIEWTYPE
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutId = if (viewType == TYPE_NOTE_WITH_SCHEDULE) {
-            // Assure-toi d'avoir ce layout ou utilise le même si tu gères la visibilité dans le XML
-            R.layout.notes_view_item // Idéalement : R.layout.notes_view_item_schedule
+            R.layout.notes_view_item_schedule // Idéalement : R.layout.notes_view_item_schedule
         } else {
             R.layout.notes_view_item
         }

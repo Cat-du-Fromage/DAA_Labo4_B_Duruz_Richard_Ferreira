@@ -1,6 +1,6 @@
 package ch.heigvd.iict.daa.lab4_b.fragments.notes
 
-import NoteViewModel
+import NotesViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,19 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.heigvd.iict.daa.lab4_b.NotesApplication
 import ch.heigvd.iict.daa.lab4_b.R
-import ch.heigvd.iict.daa.lab4_b.models.Note
-import ch.heigvd.iict.daa.lab4_b.models.NoteAndSchedule
-import ch.heigvd.iict.daa.lab4_b.models.Schedule
-import ch.heigvd.iict.daa.lab4_b.models.State
-import ch.heigvd.iict.daa.lab4_b.models.Type
-import ch.heigvd.iict.daa.lab4_b.viewmodels.NoteViewModelFactory
+import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
 import java.util.Calendar
 
 class NotesFragment : Fragment() {
 
-    private val noteViewModel: NoteViewModel by activityViewModels {
+    private val notesViewModel: NotesViewModel by activityViewModels {
         // On instancie la Factory avec le repository nécessaire
-        NoteViewModelFactory((requireActivity().application as NotesApplication).noteRepository)
+        NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository)
     }
     lateinit var recyclerView: RecyclerView
 
@@ -42,7 +37,7 @@ class NotesFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        noteViewModel.allNotes.observe(viewLifecycleOwner) { list ->
+        notesViewModel.allNotes.observe(viewLifecycleOwner) { list ->
             adapter.items = list
         }
     }
