@@ -71,14 +71,11 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.sort_by_creation_date_action -> {
-                // Pour le tri, idéalement le ViewModel devrait gérer l'ordre de la requête SQL.
-                // Pour l'instant, comme ton DAO renvoie juste findAll(), tu peux trier temporairement
-                // dans l'observer du Fragment, ou ignorer le tri si ce n'est pas critique maintenant.
-                // noteViewModel.changeSortOrder(...)
+                notesViewModel.changeSortOrder(SortOrder.CREATION_DATE)
                 true
             }
             R.id.sort_by_deadline_action -> {
-                // Idem
+                notesViewModel.changeSortOrder(SortOrder.DEADLINE)
                 true
             }
             else -> super.onOptionsItemSelected(item)
