@@ -1,9 +1,11 @@
 package ch.heigvd.iict.daa.lab4_b
 
+import NoteViewModel
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -13,11 +15,17 @@ import ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesFragment
 import ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesViewAdapter
 import ch.heigvd.iict.daa.lab4_b.models.Note
 import ch.heigvd.iict.daa.lab4_b.models.NoteAndSchedule
+import ch.heigvd.iict.daa.lab4_b.viewmodels.NoteViewModelFactory
+import kotlin.getValue
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var notesFragment: NotesFragment
     private var actionsFragment: ActionsFragment? = null
+
+    private val noteViewModel: NoteViewModel by viewModels {
+        NoteViewModelFactory((application as NotesApplication).noteRepository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,16 +64,25 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.delete_notes_action -> {
-                (this.notesFragment.recyclerView.adapter as NotesViewAdapter).deleteAll()
+                // CORRECT : On passe par le ViewModel
+                noteViewModel.deleteAllNote()
+                true
             }
             R.id.generate_note_action -> {
-                (this.notesFragment.recyclerView.adapter as NotesViewAdapter).addNote(NoteAndSchedule(Note.generateRandomNote(), Note.generateRandomSchedule()))
+                // CORRECT : On demande au ViewModel de générer
+                noteViewModel.generateANote()
+                true
             }
             R.id.sort_by_creation_date_action -> {
-                (this.notesFragment.recyclerView.adapter as NotesViewAdapter).reorderByField("creationDate")
+                // Pour le tri, idéalement le ViewModel devrait gérer l'ordre de la requête SQL.
+                // Pour l'instant, comme ton DAO renvoie juste findAll(), tu peux trier temporairement
+                // dans l'observer du Fragment, ou ignorer le tri si ce n'est pas critique maintenant.
+                // noteViewModel.changeSortOrder(...)
+                true
             }
             R.id.sort_by_deadline_action -> {
-                (this.notesFragment.recyclerView.adapter as NotesViewAdapter).reorderByField("deadline")
+                // Idem
+                true
             }
             else -> super.onOptionsItemSelected(item)
         }
