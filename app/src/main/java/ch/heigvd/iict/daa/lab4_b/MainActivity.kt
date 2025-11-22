@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private var actionsFragment: ActionsFragment? = null
 
     private val notesViewModel: NotesViewModel by viewModels {
-        NotesViewModelFactory((application as NotesApplication).noteRepository)
+        NotesViewModelFactory((application as NotesApplication).noteRepository, applicationContext)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

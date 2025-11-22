@@ -23,7 +23,7 @@ import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
  */
 class ActionsFragment : Fragment() {
     private val notesViewModel: NotesViewModel by activityViewModels {
-        NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository)
+        NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository, requireActivity().application)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

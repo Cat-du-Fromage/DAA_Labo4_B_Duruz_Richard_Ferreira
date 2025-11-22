@@ -25,7 +25,7 @@ import java.util.Calendar
 class NotesFragment : Fragment() {
 
     private val notesViewModel: NotesViewModel by activityViewModels {
-        NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository)
+        NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository, requireActivity().application)
     }
     lateinit var recyclerView: RecyclerView
 
