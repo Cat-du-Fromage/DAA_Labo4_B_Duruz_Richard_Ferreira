@@ -15,6 +15,14 @@ import ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesFragment
 import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
 import kotlin.getValue
 
+/**
+    MainActivity.kt
+     * Main Activity
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var notesFragment: NotesFragment

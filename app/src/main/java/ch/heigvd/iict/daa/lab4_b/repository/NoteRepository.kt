@@ -2,6 +2,14 @@ package ch.heigvd.iict.daa.lab4_b.repository
 
 import kotlinx.coroutines.*
 
+/**
+    NoteRepository.kt
+     * Class that link Android Room and the desired function to the app
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 class NoteRepository(
     private val noteDao: NoteDAO,
     private val applicationScope: CoroutineScope

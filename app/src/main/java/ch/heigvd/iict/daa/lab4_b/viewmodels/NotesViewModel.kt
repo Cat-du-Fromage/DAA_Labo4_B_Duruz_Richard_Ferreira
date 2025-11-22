@@ -10,6 +10,14 @@ enum class SortOrder {
     DEADLINE
 }
 
+/**
+    NotesViewModel.kt
+     * View Model that link the sort order between views
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 class NotesViewModel(private val repository: NoteRepository) : ViewModel() {
 
     private val _currentSortOrder = MutableLiveData(SortOrder.CREATION_DATE)

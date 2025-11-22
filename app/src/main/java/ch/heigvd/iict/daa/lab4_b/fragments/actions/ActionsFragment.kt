@@ -13,6 +13,14 @@ import ch.heigvd.iict.daa.lab4_b.NotesApplication
 import ch.heigvd.iict.daa.lab4_b.R
 import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
 
+/**
+    ActionsFragment.kt
+     * Fragment with buttons and counter for notes
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 class ActionsFragment : Fragment() {
     private val notesViewModel: NotesViewModel by activityViewModels {
         NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository)

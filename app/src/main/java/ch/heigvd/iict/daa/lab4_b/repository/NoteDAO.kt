@@ -4,6 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import ch.heigvd.iict.daa.lab4_b.models.*
 
+/**
+    NoteDAO.kt
+     * Interface with all function we want to, to interact with the databases
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 @Dao
 interface NoteDAO {
     /**

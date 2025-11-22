@@ -3,6 +3,14 @@ package ch.heigvd.iict.daa.lab4_b.fragments.notes
 import androidx.recyclerview.widget.DiffUtil
 import ch.heigvd.iict.daa.lab4_b.models.NoteAndSchedule
 
+/**
+    NotesDiffCallback.kt
+     * Callback on note modification/add/remove
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 class NotesDiffCallback(private val oldList: List<NoteAndSchedule>, private val newList: List<NoteAndSchedule>) : DiffUtil.Callback() {
     override fun getOldListSize() = oldList.size
     override fun getNewListSize() = newList.size

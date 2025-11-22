@@ -14,6 +14,14 @@ import ch.heigvd.iict.daa.lab4_b.R
 import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
 import java.util.Calendar
 
+/**
+    NotesFragment.kt
+     * Fragment use to interact with notes
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 class NotesFragment : Fragment() {
 
     private val notesViewModel: NotesViewModel by activityViewModels {

@@ -16,6 +16,14 @@ import ch.heigvd.iict.daa.lab4_b.models.Type
 import java.util.Calendar
 import kotlin.math.truncate
 
+/**
+    NotesViewAdapter.kt
+     * Adapter use with RecyclerView and ViewHolder
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 class NotesViewAdapter(private val context: Context) : RecyclerView.Adapter<NotesViewAdapter.ViewHolder>() {
 
     private val TYPE_NOTE = 0

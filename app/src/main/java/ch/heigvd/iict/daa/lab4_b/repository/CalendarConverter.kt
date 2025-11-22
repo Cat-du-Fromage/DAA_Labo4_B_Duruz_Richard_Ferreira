@@ -4,6 +4,14 @@ import androidx.room.*
 import java.util.Calendar
 import java.util.Date
 
+/**
+    CalendarConverter.kt
+     * Converter for date to numeric (and inverse)
+    Authors:
+     * Duruz Florian
+     * Ferreira Silva Sven
+     * Richard Aurélien
+ */
 class CalendarConverter {
 
     /**

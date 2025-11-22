@@ -1,3 +1,4 @@
+
 package ch.heigvd.iict.daa.lab4_b
 
 import android.content.Context
@@ -8,6 +9,14 @@ import ch.heigvd.iict.daa.lab4_b.repository.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+/**
+    NotesDatabase.kt
+    * Database singleton
+    Authors:
+    * Duruz Florian
+    * Ferreira Silva Sven
+    * Richard Aurélien
+ */
 @Database(entities = [Note::class, Schedule::class], version = 1, exportSchema = true)
 @TypeConverters(CalendarConverter::class)
 abstract class NotesDatabase : RoomDatabase() {

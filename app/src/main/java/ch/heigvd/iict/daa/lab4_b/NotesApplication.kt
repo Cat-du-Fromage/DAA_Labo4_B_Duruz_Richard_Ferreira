@@ -5,6 +5,14 @@ import ch.heigvd.iict.daa.lab4_b.repository.NoteRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
+/**
+    NotesApplication.kt
+    * Link to the database through the application
+    Authors:
+    * Duruz Florian
+    * Ferreira Silva Sven
+    * Richard Aurélien
+ */
 class NotesApplication : Application() {
 
     /**
