@@ -2,26 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerInParent="true"> <!-- TODO: check if pertinent -->
+    android:gravity="center">
 
     <TextView
-        android:id="@+id/notes_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="40sp"
-        android:text="21" />
+    android:id="@+id/notes_counter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:textSize="40sp"
+    android:textStyle="bold"
+    android:text="0" />
 
     <Button
         android:id="@+id/generate_note_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="?attr/colorPrimary"
-        android:layout_below="@id/notes_count"
+        android:layout_below="@id/notes_counter"
         android:layout_centerHorizontal="true"
         android:text="@string/generate_menu_item"
         android:textSize="20sp"
-        android:layout_marginVertical="75dp"/>
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:id="@+id/delete_notes_action"
@@ -32,7 +34,5 @@
         android:layout_centerHorizontal="true"
         android:text="@string/delete_menu_item"
         android:textSize="20sp" />
-
-
 
 </RelativeLayout>

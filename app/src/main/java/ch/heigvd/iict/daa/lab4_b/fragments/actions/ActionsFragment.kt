@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.heigvd.iict.daa.lab4_b.NotesApplication
@@ -23,6 +24,12 @@ class ActionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val counterText = view.findViewById<TextView>(R.id.notes_counter)
+
+        notesViewModel.countNotes.observe(viewLifecycleOwner) { count ->
+            counterText.text = "$count"
+        }
 
         view.findViewById<Button>(R.id.generate_note_action).setOnClickListener {
             notesViewModel.generateANote()

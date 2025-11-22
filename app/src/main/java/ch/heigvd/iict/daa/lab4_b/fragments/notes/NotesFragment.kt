@@ -17,12 +17,9 @@ import java.util.Calendar
 class NotesFragment : Fragment() {
 
     private val notesViewModel: NotesViewModel by activityViewModels {
-        // On instancie la Factory avec le repository nécessaire
         NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository)
     }
     lateinit var recyclerView: RecyclerView
-
-    private var today = Calendar.getInstance()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.notes_fragment, container, false)

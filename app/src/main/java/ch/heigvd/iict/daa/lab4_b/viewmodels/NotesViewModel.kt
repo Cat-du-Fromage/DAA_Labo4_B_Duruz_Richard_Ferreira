@@ -15,11 +15,9 @@ class NotesViewModel(private val repository: NoteRepository) : ViewModel() {
     private val _currentSortOrder = MutableLiveData(SortOrder.CREATION_DATE)
 
     val allNotes = MediatorLiveData<List<NoteAndSchedule>>().apply {
-        // Si la base de données change (ajout/suppression de note)
         addSource(repository.allNotes) { notes ->
             value = sortNotes(notes, _currentSortOrder.value ?: SortOrder.CREATION_DATE)
         }
-        // Si l'utilisateur change le tri
         addSource(_currentSortOrder) { order ->
             value = sortNotes(repository.allNotes.value ?: emptyList(), order)
         }
