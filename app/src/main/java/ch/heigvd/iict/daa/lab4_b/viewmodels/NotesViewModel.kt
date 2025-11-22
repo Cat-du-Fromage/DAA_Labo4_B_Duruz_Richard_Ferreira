@@ -1,3 +1,5 @@
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,9 +20,13 @@ enum class SortOrder {
      * Ferreira Silva Sven
      * Richard Aurélien
  */
-class NotesViewModel(private val repository: NoteRepository) : ViewModel() {
+class NotesViewModel(private val repository: NoteRepository, context : Context) : ViewModel() {
 
-    private val _currentSortOrder = MutableLiveData(SortOrder.CREATION_DATE)
+    private val sharedPreferences = context.getSharedPreferences("NotePreferences", Context.MODE_PRIVATE)
+
+    private val _currentSortOrder = MutableLiveData<SortOrder>().apply {
+        value = SortOrder.entries[sharedPreferences.getInt("sortOrder", SortOrder.CREATION_DATE.ordinal)]
+    }
 
     val allNotes = MediatorLiveData<List<NoteAndSchedule>>().apply {
         addSource(repository.allNotes) { notes ->
@@ -49,7 +55,11 @@ class NotesViewModel(private val repository: NoteRepository) : ViewModel() {
         }
     }
 
-    fun changeSortOrder(order: SortOrder) {
-        _currentSortOrder.value = order
+    fun changeSortOrder(sortOrder: SortOrder) {
+        _currentSortOrder.value = sortOrder
+        with(sharedPreferences.edit()) {
+            putInt("sortOrder", sortOrder.ordinal)
+            apply()
+        }
     }
 }
