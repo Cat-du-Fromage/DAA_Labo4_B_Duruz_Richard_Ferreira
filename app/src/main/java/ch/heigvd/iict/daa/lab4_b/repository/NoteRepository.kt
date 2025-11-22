@@ -10,17 +10,17 @@ class NoteRepository(
     /**
      * LiveData of all notes and schedules.
      */
-    val notes = noteDao.findAll()
+    val allNotes = noteDao.findAll()
 
     /**
      * LiveData of number of notes.
      */
-    val noteCount = noteDao.count()
+    val countNotes = noteDao.count()
 
     /**
      * Generate random note and schedule and insert them in database.
      */
-    fun generateNote() {
+    fun generateANote() {
         applicationScope.launch {
             noteDao.generateNote()
         }
@@ -29,7 +29,7 @@ class NoteRepository(
     /**
      * Delete all notes and schedules.
      */
-    fun deleteNotes() {
+    fun deleteAllNotes() {
         applicationScope.launch {
             noteDao.deleteNotes()
             noteDao.deleteSchedules()

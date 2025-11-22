@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/notes_view_item"
+    android:id="@+id/notes_view_item_schedule"
     android:layout_width="match_parent"
-    android:background="@color/md_pink_100"
     android:layout_height="64dp"
     android:padding="8dp">
 
@@ -15,12 +14,39 @@
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/note_image_desc" />
 
+    <LinearLayout
+        android:id="@+id/schedule_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:minWidth="60dp">
+
+        <ImageView
+            android:id="@+id/schedule_clock"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/clock"
+            android:contentDescription="@null" />
+        <TextView
+            android:id="@+id/schedule_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="Time"
+            android:gravity="center"/>
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/note_text_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/note_image"
-        android:layout_centerVertical="true">
+        android:layout_toStartOf="@id/schedule_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp">
 
         <TextView
             android:id="@+id/note_title_text"

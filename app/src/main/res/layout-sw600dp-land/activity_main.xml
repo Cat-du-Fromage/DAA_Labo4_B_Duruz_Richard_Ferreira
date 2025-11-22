@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Barre d'action -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
@@ -22,7 +21,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Contenu -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appcontent"
         android:layout_width="0dp"
@@ -32,7 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- CHANGE ME -->
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
@@ -40,28 +37,25 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.7" />
 
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/notes_fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline"
             android:name="ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesFragment" />
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/actions_fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toEndOf="@id/guideline"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:name="ch.heigvd.iict.daa.lab4_b.fragments.actions.ActionsFragment" />
-
+            android:name="ch.heigvd.iict.daa.lab4_b.fragments.actions.ActionsFragment"
+            android:background="#EEEEEE"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
