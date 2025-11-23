@@ -1,11 +1,13 @@
+package ch.heigvd.iict.daa.lab4_b.viewmodels
+
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ch.heigvd.iict.daa.lab4_b.models.NoteAndSchedule
 import ch.heigvd.iict.daa.lab4_b.repository.NoteRepository
+import androidx.core.content.edit
 
 enum class SortOrder {
     CREATION_DATE,
@@ -57,9 +59,8 @@ class NotesViewModel(private val repository: NoteRepository, context : Context) 
 
     fun changeSortOrder(sortOrder: SortOrder) {
         _currentSortOrder.value = sortOrder
-        with(sharedPreferences.edit()) {
+        sharedPreferences.edit {
             putInt("sortOrder", sortOrder.ordinal)
-            apply()
         }
     }
 }

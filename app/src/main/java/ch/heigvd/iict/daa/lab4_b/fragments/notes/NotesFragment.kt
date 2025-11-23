@@ -1,6 +1,6 @@
 package ch.heigvd.iict.daa.lab4_b.fragments.notes
 
-import NotesViewModel
+import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ch.heigvd.iict.daa.lab4_b.NotesApplication
 import ch.heigvd.iict.daa.lab4_b.R
 import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
-import java.util.Calendar
 
 /**
     NotesFragment.kt

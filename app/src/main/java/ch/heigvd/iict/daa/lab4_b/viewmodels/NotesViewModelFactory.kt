@@ -1,6 +1,5 @@
 package ch.heigvd.iict.daa.lab4_b.viewmodels
 
-import NotesViewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

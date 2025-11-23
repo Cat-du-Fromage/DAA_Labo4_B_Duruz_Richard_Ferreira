@@ -11,7 +11,7 @@
     android:layout_centerHorizontal="true"
     android:textSize="40sp"
     android:textStyle="bold"
-    android:text="0" />
+    android:text="@string/action_counter_default_value" />
 
     <Button
         android:id="@+id/generate_note_action"

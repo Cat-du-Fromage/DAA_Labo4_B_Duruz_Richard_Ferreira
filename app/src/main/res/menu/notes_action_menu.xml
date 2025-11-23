@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!-- TODO: put in strings -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/generate_note_action"
-        android:title="Generate" />
+        android:title="@string/generate_action_menu_item" />
 
     <item android:id="@+id/delete_notes_action"
-        android:title="Delete all" />
+        android:title="@string/delete_action_menu_item" />
 </menu>

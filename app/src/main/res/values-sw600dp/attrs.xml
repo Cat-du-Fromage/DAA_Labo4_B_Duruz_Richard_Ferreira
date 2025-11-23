@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- NOT in sw600dp-land, as to make sure this value is always picked up on tablet -->
+    <bool name="isTablet">true</bool>
+</resources>

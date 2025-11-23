@@ -1,6 +1,8 @@
 package ch.heigvd.iict.daa.lab4_b
 
-import NotesViewModel
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
+import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModel
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +15,7 @@ import androidx.fragment.app.FragmentContainerView
 import ch.heigvd.iict.daa.lab4_b.fragments.actions.ActionsFragment
 import ch.heigvd.iict.daa.lab4_b.fragments.notes.NotesFragment
 import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModelFactory
+import ch.heigvd.iict.daa.lab4_b.viewmodels.SortOrder
 import kotlin.getValue
 
 /**
@@ -80,5 +83,14 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        newConfig.orientation = if (resources.getBoolean(R.bool.isTablet)) {
+            ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        } else {
+            ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+        super.onConfigurationChanged(newConfig)
     }
 }

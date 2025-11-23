@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/blank_action"
-        android:title="@string/action_menu_title"
+        android:title="@string/sort_menu_title"
         android:icon="@drawable/sort"
         app:showAsAction="ifRoom|withText">
         <menu>
             <item android:id="@+id/sort_by_creation_date_action"
-                android:title="@string/creation_date_menu_item" />
+                android:title="@string/creation_date_sort_menu_item" />
             <item android:id="@+id/sort_by_deadline_action"
-                android:title="@string/eta_menu_item" />
+                android:title="@string/eta_sort_menu_item" />
         </menu>
     </item>
 </menu>

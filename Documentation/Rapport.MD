@@ -69,15 +69,14 @@ Comment procéderiez-vous si vous souhaitiez proposer une interface permettant d
 1) Créer un layout simple nous permettant d'éditer une note avec une classe héritant de `fragment()` pour la lier.
 2) Ajouter à chaque élément du viewHolder (de la classe `NotesViewAdapter`) un event `OnClickListener` qui sera appelé lors de la séléction d'un évenement.
 quelque chose dans ce genre : 
-```kotlin
-class ViewHolder(view: View, val context: Context) : RecyclerView.ViewHolder(view) {
-	init {
-				itemView.setOnClickListener {
-					//logic here
-				}
-		}
-}
-
-```
+    ```kotlin
+    class ViewHolder(view: View, val context: Context) : RecyclerView.ViewHolder(view) {
+        init {
+                    itemView.setOnClickListener {
+                        //logic here
+                    }
+            }
+    }
+    ```
 3) il faudra ajouter au fragment `NotesFragment` une fonction pour ouvrir la fenêtre d'édition pour la note au moment du click
 4) il faudra adapter le DAO et Repository pour prendre en compte les modification faites

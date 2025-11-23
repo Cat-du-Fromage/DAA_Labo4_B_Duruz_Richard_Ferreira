@@ -24,7 +24,7 @@ abstract class NotesDatabase : RoomDatabase() {
     /**
      * Data access object for notes.
      */
-    abstract fun noteDao(): NoteDAO;
+    abstract fun noteDao(): NoteDAO
 
     companion object {
         private var instance: NotesDatabase? = null

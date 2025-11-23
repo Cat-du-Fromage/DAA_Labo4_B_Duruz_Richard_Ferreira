@@ -1,6 +1,6 @@
 package ch.heigvd.iict.daa.lab4_b.fragments.actions
 
-import NotesViewModel
+import ch.heigvd.iict.daa.lab4_b.viewmodels.NotesViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
