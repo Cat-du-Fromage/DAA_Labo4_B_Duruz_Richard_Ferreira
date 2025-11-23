@@ -49,6 +49,40 @@ La base de données `NotesDatabases` est un singleton qui est initialisé avec l
 cette dernière se rempli de 10 éléments aléatoire cette initialisation n'est faite qu'à la création d'une nouvelle base de données et non à chaque ouverture de l'application.
 la base de données contient une référence vers la DAO, ainsi notre application va utiliser ces 2 classes pour initialiser le Répertoire de notes.
 
+### Utilisation de viewmodel
+
+Afin d'utiliser un viewmodel pour nos données, 2 fichiers furent rajoutés : `NotesViewModel` qui va contenir le viewmodel et `NotesViewModelFactory` qui va contenir la factory pour le viewmodel de notes.
+
+#### NotesViewModel
+Le viewmodel est simple et va implémenter les besoins demandés, càd :
+- Récuperation de toutes les notes (ordonées en fct des preferences de l'utilisateur (via la sharedpreference))
+- le compte des notes
+- la génération d'une note random
+- la suppression de toutes les notes
+
+Nous implémentons aussi ici la gestion de l'ordre des tâches (cela centralise grâce au viewmodel)
+
+#### NotesViewModelFactory
+Une simple factory pour instancier le viewmodel avec un `NoteRepository`
+
+#### Utilisation dans les fragments et activity
+Pour l'utiliser, rien de plus simple.
+
+Dans l'activity :
+```kotlin
+    private val notesViewModel: NotesViewModel by viewModels {
+        NotesViewModelFactory((application as NotesApplication).noteRepository, applicationContext)
+    }
+```
+
+Et dans les fragments :
+```kotlin
+private val notesViewModel: NotesViewModel by activityViewModels {
+        NotesViewModelFactory((requireActivity().application as NotesApplication).noteRepository, requireActivity().application)
+}
+```
+
+les fragments et l'activity utiliseront donc le même viewmodel !
 
 ## Réponse aux questions
 
